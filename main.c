@@ -11,7 +11,6 @@ int main()
 {
     printf("Ingerese el camino al archivo: \n");
     gets(pathArchivo);
-
     resolverCasos(pathArchivo);
 
     /*mapa = nuevoGrafo(20);

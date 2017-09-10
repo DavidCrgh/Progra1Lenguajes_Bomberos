@@ -10,6 +10,12 @@ struct grafo *nuevoGrafo(int max){
     return nuevo;
 };
 
+void eliminarGrafo (struct grafo *grafo){
+    free(grafo->matriz);
+    free(grafo->vertices);
+    free(grafo);
+}
+
 void recorrer(struct grafo *grafo){
     int i, j;
     for (i = 0; i < grafo->max; i++){

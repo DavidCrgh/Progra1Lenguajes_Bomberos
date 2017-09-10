@@ -12,6 +12,8 @@ struct grafo{
 
 struct grafo *nuevoGrafo(int max);
 
+void eliminarGrafo (struct grafo *grafo);
+
 void recorrer(struct grafo *grafo);
 
 void imprimir(struct grafo *grafo);
