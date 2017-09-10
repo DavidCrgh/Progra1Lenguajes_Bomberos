@@ -6,12 +6,12 @@
 
 void resolverCasos(char* pathArchivo){
     struct grafo *mapa = inicializarMapa();
-    //inicializarMapa(mapa);
 
-    FILE *archivoEntrada = fopen("C:\\Users\\User\\Desktop\\Incendios.txt", "r");
+    FILE *archivoEntrada = fopen(pathArchivo, "r");
     char bufferLinea[8];
     int tuplaCalle[2] = {0,0};
 
+    int numeroCaso = 0;
     int esquinaIncendio = 0;
 
     while(1){
@@ -31,29 +31,14 @@ void resolverCasos(char* pathArchivo){
             }
 
             agregarAristaBidireccional(tuplaCalle[0], tuplaCalle[1], 1, mapa);
-            imprimir(mapa);
         }
+        printf("CASO #%d\n", numeroCaso);
+        printf("Existen X caminos de la estacion de bomberos a la esquina %d\n", esquinaIncendio);
         determinarCaminos(1, esquinaIncendio, mapa);
-        //eliminarGrafo(mapa);
-        inicializarMapa(mapa);
+        eliminarGrafo(mapa);
+        mapa = inicializarMapa();
+        numeroCaso++;
     }
-
-
-
-
-
-
-
-    //caracter = fgets(bufferLinea, 4, archivoEntrada);
-
-
-    /*while(1){
-        caracter = (fgetc(archivoEntrada));
-        if(caracter == EOF)
-            break;
-        printf("%c", caracter);
-    }*/
-
 }
 
 struct grafo* inicializarMapa(){
@@ -62,12 +47,11 @@ struct grafo* inicializarMapa(){
     struct grafo* mapa;
 
     mapa = nuevoGrafo(numeroEsquinas); //Crea nuevo grafo de 20 nodos
-    for(int i = 2; i <= numeroEsquinas; i++){
+    for(int i = 1; i <= numeroEsquinas; i++){
         agregarVertice(i, mapa);
     }
 
     return mapa;
-    //imprimir(mapa);
 }
 
 int contarDigitos(char* str, int i){
